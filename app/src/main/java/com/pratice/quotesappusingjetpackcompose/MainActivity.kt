@@ -10,13 +10,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.pratice.quotesappusingjetpackcompose.screen.QuoteItemList
 import com.pratice.quotesappusingjetpackcompose.ui.theme.QuotesAppUsingJetpackComposeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
+            QuoteItemList()
         }
     }
 }
