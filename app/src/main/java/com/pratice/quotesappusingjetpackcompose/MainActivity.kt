@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.pratice.quotesappusingjetpackcompose.screen.QuoteItemList
 import com.pratice.quotesappusingjetpackcompose.screen.QuotelistScreen
+import com.pratice.quotesappusingjetpackcompose.screen.QuotesDetail
 import com.pratice.quotesappusingjetpackcompose.ui.theme.QuotesAppUsingJetpackComposeTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,13 +35,23 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun App() {
     if (Datamanager.isDataLoaded.value){
-        QuotelistScreen(data = Datamanager.data) {
-
+        if(Datamanager.currentScreen.value == Pages.Listing ){
+            QuotelistScreen(data = Datamanager.data) {
+              Datamanager.switchPages(it)
+            }
+        }else{
+            Datamanager.currentQuotes?.let { QuotesDetail(quotes = it) }
         }
+
     }else{
         Box (modifier = Modifier.fillMaxSize(1f), contentAlignment = Alignment.Center){
             Text(text = "Loading.....", style = MaterialTheme.typography.headlineLarge)
 
         }
     }
+}
+
+enum class Pages{
+    Listing,
+    Details
 }

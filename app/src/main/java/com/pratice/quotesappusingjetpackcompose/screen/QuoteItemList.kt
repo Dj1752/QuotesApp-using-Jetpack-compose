@@ -38,10 +38,10 @@ import com.pratice.quotesappusingjetpackcompose.model.Quotes
 
 
 @Composable
-public fun QuoteItemList(quotes: Quotes,OnClick:()-> Unit) {
+public fun QuoteItemList(quotes: Quotes,OnClick:(quotes:Quotes)-> Unit) {
     Card(
         elevation = CardDefaults.cardElevation(4.dp),
-        modifier = Modifier.padding(8.dp).clickable { OnClick() }
+        modifier = Modifier.padding(8.dp).clickable { OnClick(quotes) }
     ) {
         Row(modifier = Modifier.padding(16.dp)) {
             Image(

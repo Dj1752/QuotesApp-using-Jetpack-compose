@@ -15,7 +15,7 @@ import com.pratice.quotesappusingjetpackcompose.R
 import com.pratice.quotesappusingjetpackcompose.model.Quotes
 
 @Composable
-fun QuotelistScreen(data: Array<Quotes>, OnClick: () -> Unit) {
+fun QuotelistScreen(data: Array<Quotes>, OnClick: (quotes:Quotes) -> Unit) {
    Column {
        Text(
            text = "Quotes App",
@@ -28,9 +28,7 @@ fun QuotelistScreen(data: Array<Quotes>, OnClick: () -> Unit) {
                Font(R.font.montserratvariablefontwght)
            )
        )
-       QuoteList(data = data) {
-           OnClick
-       }
+       QuoteList(data = data,OnClick)
    }
 
 }

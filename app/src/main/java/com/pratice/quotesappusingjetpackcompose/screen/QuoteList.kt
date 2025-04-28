@@ -7,14 +7,12 @@ import com.pratice.quotesappusingjetpackcompose.model.Quotes
 import com.pratice.quotesappusingjetpackcompose.screen.QuoteItemList
 
 @Composable
-fun QuoteList(data:Array<Quotes>,OnClick:()-> Unit) {
+fun QuoteList(data:Array<Quotes>,OnClick:(quotes:Quotes)-> Unit) {
     
     LazyColumn(content =
     {
         items(data){
-            QuoteItemList(quotes = it) {
-                OnClick()
-            }
+            QuoteItemList(quotes = it,OnClick)
         }
     })
     

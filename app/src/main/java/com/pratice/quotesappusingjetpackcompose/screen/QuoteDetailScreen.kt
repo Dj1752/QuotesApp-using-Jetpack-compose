@@ -1,5 +1,6 @@
 package com.pratice.quotesappusingjetpackcompose.screen
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -25,11 +26,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
+import com.pratice.quotesappusingjetpackcompose.Datamanager
 import com.pratice.quotesappusingjetpackcompose.R
 import com.pratice.quotesappusingjetpackcompose.model.Quotes
 
 @Composable
 fun QuotesDetail(quotes: Quotes) {
+    BackHandler {
+        Datamanager.switchPages(null)
+    }
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
