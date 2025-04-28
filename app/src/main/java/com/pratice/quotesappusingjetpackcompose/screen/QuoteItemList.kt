@@ -2,6 +2,7 @@ package com.pratice.quotesappusingjetpackcompose.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,12 +34,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pratice.quotesappusingjetpackcompose.R
+import com.pratice.quotesappusingjetpackcompose.model.Quotes
 
 
 @Composable
-public fun QuoteItemList() {
+public fun QuoteItemList(quotes: Quotes,OnClick:()-> Unit) {
     Card(
-        modifier = Modifier.padding(8.dp)
+        elevation = CardDefaults.cardElevation(4.dp),
+        modifier = Modifier.padding(8.dp).clickable { OnClick() }
     ) {
         Row(modifier = Modifier.padding(16.dp)) {
             Image(
@@ -54,7 +57,7 @@ public fun QuoteItemList() {
             Spacer(modifier = Modifier.padding(4.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = "Time is the most valuable thing a man can spend..",
+                    text = quotes.title,
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 8.dp)
@@ -66,7 +69,7 @@ public fun QuoteItemList() {
                         .height(4.dp)
                 )
                 Text(
-                    text = "Theophrastus",
+                    text = quotes.author,
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.Thin,
                     modifier = Modifier.padding(top = 4.dp)
@@ -76,44 +79,6 @@ public fun QuoteItemList() {
     }
 }
 
-@Preview
-@Composable
-fun QuotesDetail() {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .fillMaxSize(1f)
-            .background(Brush.sweepGradient(colors = listOf(Color(0xFFffffff), Color(0xFFE3E3E3))))
-    ) {
-        Card(
-            elevation = CardDefaults.elevatedCardElevation(4.dp),
-            modifier = Modifier
-                .padding(32.dp)
-        ) {
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .padding(16.dp, 24.dp)
-            ) {
-                Image(
-                    imageVector = Icons.Filled.FormatQuote,
-                    contentDescription = "Quotes",
-                    modifier = Modifier
-                        .size(40.dp)
-                        .rotate(180f)
-                )
-                Text(text = "Time is the most valuable thing a man can spend..",
-                    fontFamily = FontFamily(Font(R.font.montserratvariablefontwght)),
-                            style = MaterialTheme.typography.headlineLarge)
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Theophrastus",
-                modifier = Modifier.padding(10.dp),
-                fontFamily = FontFamily(Font(R.font.montserratvariablefontwght)),
-                style = MaterialTheme.typography.titleSmall)
 
-        }
-    }
-}
+
 
